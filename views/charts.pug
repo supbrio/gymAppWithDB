@@ -1,0 +1,17 @@
+extends base
+block nav
+    div
+        a.nav-link(href="/") 
+            div.button-class Diary
+        a.nav-link(href="/workouts")
+            div.button-class Workouts
+        a.nav-link.nav-link-active(href="/charts")
+            div.button-class Charts
+    a.nav-link(href="/user")
+        div.button-class User
+block top
+    div
+        div.time-option time here
+block bottom
+    div.bottom.container
+        div(id="chart" style="width: 100%; height: 350px;" data-workouts="")

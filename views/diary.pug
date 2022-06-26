@@ -1,0 +1,38 @@
+extends base
+block nav
+    div
+        a.nav-link.nav-link-active(href="/") 
+            div.button-class Diary
+        a.nav-link(href="/workouts")
+            div.button-class Workouts
+        a.nav-link(href="/charts")
+            div.button-class Charts
+    a.nav-link(href="/user")
+        div.button-class User
+block top
+    div
+        - const date = (date)=>{ const d = new Date(date); const x = d.toISOString().slice(0,10).split('-');const y = `${x[1]}-${x[2]}-${x[0]}`; return y}       
+        - let workoutDate = workout ? date(workout.date) : date(Date.now());
+        input.time-option.input-date(type="text" required value=`${workoutDate}`)
+        input.input-top.time-option.input-body-weight(type="text" placeholder="Bodyweight" value=`${workout? workout.bodyWeight: ""}`)
+        input.input-top.time-option.input-calories(type="text" placeholder="Calories" value= `${workout ? workout.calories: ""}`)
+        button.btn.btn-post-workout Save workout
+block bottom
+    div.bottom.container.grid-col-2
+        form.input-exercise
+            select.input-params.input-exercise(type="text" placeholder="Exercise" required)
+                option(value="Squat") Squat 
+                option(value="Deadlift") Deadlift
+                option(value="Benchpress") Bench-press
+                option(value="Legpress") Leg press
+                option(value="Overheadpress") Overheadpress
+            input.input-params.input-exercise-weight(type="text" placeholder="Weight" required)
+            input.input-params.input-sets(type="text" placeholder="set1,set2,set3..." required)
+            button.btn.btn-input-exercise Apply
+        div.whole-workout
+            if workout
+                each exercise in workout.exercises 
+                    p.exercise-text
+                        span.exercise= exercise.exercise 
+                        span.weight= `${exercise.weight}kg`
+                        span.sets= `(${exercise.sets})`

@@ -1,0 +1,25 @@
+doctype HTML 
+html 
+    head
+        meta(http-equiv="Content-Type", content="text/html;charset=UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=7")
+        meta(name="description", content="Gymm app for daily diary")
+        meta(name="keywords", content="Gym application")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet", href="/css/style.css")
+        script(defer type="module" src="/js/index.js")
+        script(src="https://code.highcharts.com/highcharts.js")
+        script(src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js")
+        title Gym App | #{title} 
+
+    
+    .container.login-container
+            form.form.login
+                h1.sign-in Login 
+                input.login-input.login-email(type="email" placeholder="Email" required)
+                input.login-input.login-password(type="password" placeholder="Password" required) 
+                button.btn.btn-login Login
+                a.login-link.password-reset(href="#")
+                    p.forgot-pass Forgot password?
+                a.login-link.sign-up(href="#")
+                    p.create-acc Create Account

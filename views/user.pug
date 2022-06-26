@@ -1,0 +1,29 @@
+extends base
+block nav 
+    div
+        a.nav-link(href="/") 
+            div.button-class Diary
+        a.nav-link(href="/workouts")
+            div.button-class Workouts
+        a.nav-link(href="/charts")
+            div.button-class Charts
+    a.nav-link.nav-link-active(href="/user")
+        div.button-class User
+            
+block top
+        h1 USER
+        btn.btn.btn-logout LOGOUT
+block bottom
+    ul.user-info-list 
+        li.list-item Name: 
+            span Aatu Korhonen 
+            button.btn-edit-info edit
+        li.list-item Email: 
+            span email@email.com 
+            button.btn-edit-info edit
+        li.list-item Last logged in: 
+            span 27.7.2022
+        li.list-item 
+            button.btn.btn-save-info Save
+        li.list-item 
+            button.btn.btn-change-password Change password    

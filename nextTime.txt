@@ -1,0 +1,1 @@
+Ajan määritys juttuun pitää vielä asettaa että Workoutit latautuu päiväyksen mukaan workout viewiin ja diary viewiin kanssa että sen päivän exerciset latautuu sen päivän datasta

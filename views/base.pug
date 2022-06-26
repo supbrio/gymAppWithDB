@@ -1,0 +1,21 @@
+doctype HTML 
+html 
+    head
+        meta(http-equiv="Content-Type", content="text/html;charset=UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=7")
+        meta(name="description", content="Gymm app for daily diary")
+        meta(name="keywords", content="Gym application")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet", href="/css/style.css")
+        script(defer type="module" src="/js/index.js")
+        script(src="https://code.highcharts.com/highcharts.js")
+        script(src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js")
+        title Gym App | #{title} 
+    body.body 
+        nav.nav.container
+            block nav
+    main.main.container
+        div.top
+            block top
+    block bottom
+    include _footer

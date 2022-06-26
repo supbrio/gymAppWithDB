@@ -1,0 +1,31 @@
+extends base
+block nav
+    - const constructWorkout = exercises => { return exercises.map(e => `${e.exercise} [${e.weight}kg*(${e.sets.join()})]`).join(', ')}
+    div
+        a.nav-link(href="/") 
+            div.button-class Diary
+        a.nav-link.nav-link-active(href="/workouts")
+            div.button-class Workouts
+        a.nav-link(href="/charts")
+            div.button-class Charts
+    a.nav-link(href="/user")
+        div.button-class User
+block top 
+    div
+        div.time-option time here
+        div.time-option exercises
+        button.time-option.btn.btn-search-workout Search
+block bottom
+    div.bottom.container
+        ul.workouts-list 
+            each workout in workouts
+                - const exercises = {...workout.exercises}
+                li.list-item= workout.date.toLocaleDateString({day:'numeric', month:'long', year:'numeric'})
+                    | 
+                    span.body-weight= `Bodyweight: ${workout.bodyWeight? workout.bodyWeight + ' kg': 'Not given'}, `  
+                    span.calories= `Calories: ${workout.calories}, `
+                    span.exercises= `Exercises: ${constructWorkout(workout.exercises)}`      
+            //- li.list-item 7.7.2022: 
+            //-     span.body-weight Bodyweight: 80kg, 
+            //-     span.calories Calories: 3000, 
+            //-     span.exercises Exercises: squat*80kg (2,2,2), bench*100kg (12,11,10)
