@@ -62,9 +62,16 @@ exports.getWorkout = catchAsync(async (req, res, next) => {
 });
 
 exports.createWorkout = catchAsync(async (req, res, next) => {
+  let date = new Date(req.body.date).getTime()
+  console.log(date)
+  date = +date + 4*1000*60*60
+  date = new Date(date)
+  console.log(date)
   const workouts = await Workout.find();
+
   const workout = [...workouts].find((e) => {
-    return e.date.toISOString().slice(0, 10) === req.body.date.slice(0, 10);
+    console.log(e.date.toISOString())
+    return e.date.toISOString().slice(0, 10) === date.toISOString().slice(0, 10);
   });
   console.log(workout);
   console.log(req.body);
@@ -84,7 +91,7 @@ exports.createWorkout = catchAsync(async (req, res, next) => {
 
   const newWorkout = await Workout.create({
     author: req.body.author,
-    date: req.body.date,
+    date,
     bodyWeight: req.body.bodyWeight,
     calories: req.body.calories,
     exercises: req.body.exercises,

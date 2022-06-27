@@ -22,6 +22,7 @@
     "mongoose": "^5.13.14",
     "morgan": "^1.10.0",
     "ndb": "^1.1.5",
+    "nodemon": "^2.0.18",
     "pug": "^3.0.2"
   },
   "devDependencies": {
