@@ -1,7 +1,10 @@
 extends base
 block nav
     div
-        a.nav-link.nav-link-active(href="/") 
+        - let dateNow = +new Date(Date.now()).getTime() + 3 * 1000*60*60; 
+        - dateNow = new Date(dateNow).toISOString().slice(0,10).split('-')
+        - dateNow = `${dateNow[1]}-${dateNow[2]}-${dateNow[0]}`
+        a.nav-link.nav-link-active(href=`/diary/${dateNow}`)
             div.button-class Diary
         a.nav-link(href="/workouts")
             div.button-class Workouts
@@ -11,9 +14,9 @@ block nav
         div.button-class User
 block top
     div
-        - const date = (date)=>{ const d = new Date(date); const x = d.toISOString().slice(0,10).split('-');const y = `${x[1]}-${x[2]}-${x[0]}`; return y}       
+        - const date = (date)=>{ const d = new Date(date); const x = d.toISOString().slice(0,10); return x}       
         - let workoutDate = workout ? date(workout.date) : date(Date.now());
-        input.time-option.input-date(type="text" required value=`${workoutDate}`)
+        input.time-option.input-date(type="date" required value=`${workoutDate}`)
         input.input-top.time-option.input-body-weight(type="text" placeholder="Bodyweight" value=`${workout? workout.bodyWeight: ""}`)
         input.input-top.time-option.input-calories(type="text" placeholder="Calories" value= `${workout ? workout.calories: ""}`)
         button.btn.btn-post-workout Save workout

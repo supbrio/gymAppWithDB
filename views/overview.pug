@@ -2,7 +2,7 @@ extends base
 block nav
     div
         - let date = new Date(Date.now()).toISOString().slice(0,10).split('-'); date = `${date[1]}-${date[2]}-${date[0]}`
-        a.nav-link.nav-link-active(href="/")
+        a.nav-link.nav-link-active(href=`/diary/${date}`)
             div.button-class Home
         a.nav-link(href=`/diary/${date}`) 
             div.button-class Diary
